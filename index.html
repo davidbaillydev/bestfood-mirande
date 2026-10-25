@@ -146,24 +146,6 @@
     </div>
     <!-- slider_area_end -->
 
-<div id="game-popup-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index:999999; justify-content:center; align-items:center; backdrop-filter: blur(8px); background: rgba(0,0,0,0.7); padding: 15px;">
-    <div style="position:relative; width:100%; max-width:400px; height:85vh; max-height:650px; border-radius: 25px; overflow: visible;">
-        
-        <button onclick="closeGamePopup()" 
-                style="position:absolute; top:-15px; right:-15px; z-index:100001; background:#ffcc00; color:#1a1a1a; border:2px solid #fff; border-radius:50%; width:35px; height:35px; cursor:pointer; font-size:18px; font-weight:bold; display:flex; justify-content:center; align-items:center; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
-          ✕
-        </button>
-
-        <iframe 
-            id="game-iframe-saas"
-            src="https://sashimipinko.netlify.app/?name=Best%20Food&logo=https%3A%2F%2Fwww.bestfoodkebab.com%2Fimg%2Flogo.png&google=https%3A%2F%2Fg.page%2Fr%2FCUwBM_qPzJhwEAE%2Freview&id_resto=12" 
-            style="width:100%; height:100%; border:none; border-radius:25px; background: #1a1a1a;" 
-            allowtransparency="true"
-            allow="clipboard-write">
-        </iframe>
-    </div>
-</div>
-
     <div class="best_burgers_area">
         <div class="container">
             <div class="row">
@@ -594,39 +576,6 @@
 
     <script src="js/main.js"></script>
     <script src="https://www.fbgcdn.com/embedder/js/ewm2.js" defer async ></script>
-
-  <script>
-    // Fonction pour fermer la pop-up proprement
-    function closeGamePopup() {
-        const overlay = document.getElementById('game-popup-overlay');
-        const iframe = document.getElementById('game-iframe-saas');
-        
-        if(overlay) overlay.style.display = 'none';
-        if(iframe) iframe.src = iframe.src; // Réinitialise le jeu pour couper le son
-        document.body.style.overflow = ''; // Réactive le scroll du site
-    }
-
-    // Fonction pour ouvrir la pop-up
-    function openGamePopup() {
-        const overlay = document.getElementById('game-popup-overlay');
-        if(overlay) {
-            overlay.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Bloque le scroll derrière
-        }
-    }
-
-    // Écouteur de messages pour la fermeture automatique depuis le jeu (SaaS)
-    window.addEventListener('message', function(event) {
-        if (event.data === 'closeGame') {
-            closeGamePopup();
-        }
-    });
-
-    // Lancement automatique après 3 secondes
-    window.onload = function() {
-        setTimeout(openGamePopup, 3000);
-    };
-</script>
 
 </body>
 
